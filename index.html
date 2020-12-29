@@ -28,7 +28,46 @@
         </header>
     <section>
         <h1>Introduction</h1>
-        
+        <p>
+        Digital Computers are the primary means of implementing feedback control loops. They provide the advantages of improved
+        performance and flexibility at reduced cost.<br/>
+        The digital computer in the loop can only handle <mark>discrete-time, quantized signals.</mark> 
+        A discrete-time control system is a control system in which <mark>control signals can change only at a 
+        discrete instants of time.</mark><br /> The controlled process is normally a continuous time process,
+        and hence sampling is used to enable digital control. Thus
+        in a sampled-data control system we have a mixture of continuous-time and discrete-time signals
+        </p>
+        <figure>
+            <img src="images/blockdiagramofdigitalcontrolsystem.png"/>
+            <figcaption>Block Diagram of Digital Control Systems</figcaption>
+        </figure>
+        <p>
+        If sampling period is T and quantization step is q and they are extremely small, digital system would be treated 
+        approximately as a continuous-time system. However, for practical reasons we cannot have too small T and q.<br />
+        In this part of the course, we study the <mark>classical (transform) methods</mark> for the
+        <mark>analysis and design</mark> of digital control systems.<br />Z-transform plays a role analogous to that of 
+        Laplace transform in continuous-time systems.
+        </p>
+        <h1>The Ideal Sampler</h1>
+        <p>
+            A sampler can be viewed as a switch that is closed every T seconds and remain closed for an interval of length h 
+        </p>
+        <figure>
+            <img src="images/idealsampler.png"/>
+            <figcaption>IdealSampler with switch of interval h</figcaption>
+        </figure>
+        <p>
+            and we will assume regular sampling with a period T in all parts of the system. for simplicity we will assume 
+            having zero width impulses
+        </p>
+        <figure>
+            <img src="images/idealsampler_impulses.png"/>
+            <figcaption>IdealSampler with switch of interval h</figcaption>
+        </figure>
+        $$ x^*(t)={\sum\limits_{k=0}^{\infty} x(kT) \delta(t-kT)}$$
+    <h1>Definition of Z-transform</h1>
+    <p>Taking Laplace transform of the ideally sampled signal:</p>
+    $$ X^*(s)=\mathcal{L}{{\sum\limits_{k=0}^{\infty} x(kT) \delta(t-kT)}}$$
     </section>
 <footer>
     <p><small>Hosted on <a href="https://www.github.com/hishamelreedy/">GitHub Pages</a> by HishamElreedy</small></p>

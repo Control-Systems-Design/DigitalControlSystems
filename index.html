@@ -205,14 +205,14 @@
     $${\lim_{k->\infty}f(k)}={\lim_{s->0} sF(s)}={\lim_{z->1} (z-1)F(z)}$$
     <h2>Miscellaneous Examples:</h2>
     <p>
-        Example: Get f(k) if \(F(z)={z \over {z^2 + z +1}}\):<br/>
+        Example#1: Get f(k) if \(F(z)={z \over {z^2 + z +1}}\):<br/>
         $$-2cos(\omega_o T)=1 --> cos(\omega_o T)=-{1 \over 2} --> {\omega_o T}={2\pi \over 3}$$
         $$F(z)={{2 \over \sqrt(3)}{\sqrt(3) \over 2} z \over {z^2 + z +1}}={2 \over \sqrt(3)}*sin(\omega_o T k)$$
         $$=-{1 \over 2}*{2 \over \sqrt(3)}sin(\omega_o T k)=-{1 \over 2}*{2 \over \sqrt(3)}sin({2\pi \over 3}k)$$
-        Example: Get F(z) for \(f(t)=tsin(t)\)<br/>
+        Example#2: Get F(z) for \(f(t)=tsin(t)\)<br/>
         $$sin(t)--Z-->{zsin(\omega_o T) \over {z^2-2cos(\omega_oT)z+1}}$$
         $$-TZ {d \over dz}{[{zsin(\omega_o T) \over {z^2-2cos(\omega_oT)z+1}}]}$$
-        Example: Get Pulse Transfer Function = \(C(z) \over U(z)\) (assumption: Zero Initial Condition):
+        Example#3: Get Pulse Transfer Function = \(C(z) \over U(z)\) (assumption: Zero Initial Condition):
         $$c(k+2)+2c(k+1)+3c(k)=u(k+1)-u(k)$$
         $$z^{-2}c(z)+z^{-1}c(z)+3c(z)=z^{-1}u(z)-u(z)$$
         $$[z^{-2}+z^{-1}+3]c(z)=[z^{-1}-1]u(z)$$
@@ -222,8 +222,21 @@
         when we remove the assumption then: \(c(k+2)-->[z^2C(z)-z^2c(0)-zc(1)]\) from Shifting Property<br/> as c(0)!=0, c(1)!=0
         $$c(z)=T.f.(z)*U(z)--->output in z-domain$$
         $$c(k)=z^{-1}{[c(z)]}-->output \space in \space time$$
+        Example#4: Get f(k) for \(F(z)={{z - {1 \over 2}}\over{z^2-z+2}}\)
+        We will solve this case using long division because of complex denominator
+        <figure>
+            <img src="images/longdivision.JPG"/>
+            <figcaption>Long Division</figcaption>
+        </figure>
     </p>
-    
+    <h1>Pulse Transfer Function</h1>
+    <figure>
+        <img src="images/pulse_transfer_function.png"/>
+        <figcaption>Long Division</figcaption>
+    </figure>
+    <p>
+        
+    </p>
     </section>
 <footer>
     <p><small>Hosted on <a href="https://www.github.com/hishamelreedy/">GitHub Pages</a> by HishamElreedy</small></p>

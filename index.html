@@ -10,6 +10,25 @@
 
     <SCRIPT SRC='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></SCRIPT>
     <SCRIPT>MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}})</SCRIPT>
+    <style>
+        .marked{
+                background-color: yellow;
+                font-weight: bold;
+        }
+        .marked2{
+                background-color: aqua;
+                font-weight: bold;
+        }
+        p{
+            font-size: large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        li{
+            font-size: large;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -68,6 +87,143 @@
     <h1>Definition of Z-transform</h1>
     <p>Taking Laplace transform of the ideally sampled signal:</p>
     $$ X^*(s)=\mathcal{L}{{\sum\limits_{k=0}^{\infty} x(kT) \delta(t-kT)}}$$
+    <h1>Z-Transform</h1>
+    <p>
+        $$F(z)={\sum\limits_{k=0}^{\infty} f(kT) Z^{-k}}, Z=e^{ST}$$
+    </p>
+    <figure>
+        <img src="images/z-transform.png"/>
+        <figcaption>IdealSampler with switch of period T</figcaption>
+    </figure>
+    <h2>Table of Transforms</h2>
+    <table>
+        <tr>
+            <td>$$f(t)$$</td>
+            <td>$$F(s)$$</td>
+            <td>$$F(z)$$</td>
+            <td>$$Comment$$</td>
+        </tr>
+        <tr>
+            <td>$$\delta(t)$$</td>
+            <td>$$1$$</td>
+            <td>$$1$$</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$$u(t)$$</td>
+            <td>$$1 \over s$$</td>
+            <td>$$Z \over {Z-1}$$</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$$\class{marked2}t$$</td>
+            <td>$$1 \over S^2$$</td>
+            <td>$$\class{marked2}T Z \over {(Z-1)}^2$$</td>
+            <td>$$function of sampling time$$</td>
+        </tr>
+        <tr>
+            <td>$$e^{\class{marked}-at}$$</td>
+            <td>$$1 \over {s\class{marked}+a}$$</td>
+            <td>$$Z \over {Z\class{marked}-e^{\class{marked}-aT}}$$</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$$sin(w_o t)$$</td>
+            <td>$$w_o \over {s^2 + {w_o}^2}$$</td>
+            <td>$$Zsin(w_o T) \over {Z^2 - (2cos(w_o T))Z + 1}$$</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$$cos(w_o t)$$</td>
+            <td>$$s \over {s^2 + {w_o}^2}$$</td>
+            <td>$$Z(Z-cos(w_oT)) \over {Z^2 - [2cos(w_o T)]Z + 1}$$</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$$a^k, k=0,1,2,3,..$$</td>
+            <td>$$-----$$</td>
+            <td>$$Z \over {Z-a}$$</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$$tf(t)$$</td>
+            <td>$$-{d \over ds}F(s)$$</td>
+            <td>$$-{TZ}{d \over dZ}F(Z)$$</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$$e^{\class{marked}\pm at}$$</td>
+            <td>$$F(s), s=s \class{marked}\mp a $$</td>
+            <td>$$F(z), z=z e^{\class{marked}\mp aT} $$</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>$$f(t-nT)$$</td>
+            <td>$$e^{-nTs}F(z)$$</td>
+            <td>$$z^{-n}F(z)$$</td>
+            <td>$$Negative Shifting Property$$</td>
+        </tr>
+        <tr>
+            <td>$$f((k+n)T)$$</td>
+            <td>$$-----$$</td>
+            <td>$$Z^nF(Z)-\sum\limits_{k=0}^{n-1} Z^{n-k}f(kT)$$</td>
+            <td>$$Positive Shifting Property$$</td>
+        </tr>
+    </table>
+    <p>
+        Example:
+        $$f(k+3)---->Z^3F(2)-Z^3f(0)-Z^2f(1)-Zf(2)$$
+    </p>
+    <h2>Relation between S-Domain && Z-Domain</h2>
+    <p>
+        $$S=\sigma \pm j \omega$$
+        $$Z=e^{sT}=e^{{(\sigma \pm j \omega )}T}=e^{\sigma}e^{\pm j \omega T}=|e^{\sigma}| \angle{\pm \omega T}$$
+    </p>
+    <h2>F(s)--->F(z)</h2>
+    <ol>
+        <li> Partial Fraction (PF) Method</li>
+        Ex: $$F(s)={[1 \over {s (s+1)}]}--p.f.---->[{1 \over s}-{1\over{s+1}}]---Z{}--->[{Z \over {Z-1}}-{Z \over Z-e^{-T}}] $$
+        <li>Residue Method $$let\space F(\lambda)=F(s)$$</li>
+        $$F(Z)=\sum\limits_{poles[F(\lambda)]} Res{[{F(\lambda) \over {1-z^{-1}e^{\lambda t}}}]}$$
+    </ol>
+    <p>Residue Method-----</p>
+    <h2>Inverse Z-Transform</h2>
+    <ol>
+        <li>Power Series--->Long Division</li>
+        $$F(Z)={P(Z) \over Q(Z)}=f(0)+f(T)Z^{-1}+f(2T)Z^{-2}+...$$
+        <li>Partial Fraction: $$f(k)=Z^{-1}{[z*p.f.{[{F(z) \over z}]}]}$$</li>
+        Example:
+        $$F(z)={z \over {(z-1)(z-2)}}$$
+        $$p.f.[{F(z) \over z}] = {-1 \over {z-1}} + {1 \over {z-2}}$$
+        $$F(z)={{-z \over {z-1}}+{z \over {z-2}}}$$
+        Note: if you don't have Z in numerator put \(z*z^{-1}\) in numerator then substitute k with k-1 after inverse transform
+    </ol>
+    <h2>Initial Value Theorem</h2>
+    $$f(0)={\lim_{s->\infty} sF(s)}={\lim_{z->\infty} F(z)}$$
+    <h2>Final Value Theorem</h2>
+    $$S-->0 ===> Z=e^{sT}-->1 $$
+    $${\lim_{k->\infty}f(k)}={\lim_{s->0} sF(s)}={\lim_{z->1} (z-1)F(z)}$$
+    <h2>Miscellaneous Examples:</h2>
+    <p>
+        Example: Get f(k) if \(F(z)={z \over {z^2 + z +1}}\):<br/>
+        $$-2cos(\omega_o T)=1 --> cos(\omega_o T)=-{1 \over 2} --> {\omega_o T}={2\pi \over 3}$$
+        $$F(z)={{2 \over \sqrt(3)}{\sqrt(3) \over 2} z \over {z^2 + z +1}}={2 \over \sqrt(3)}*sin(\omega_o T k)$$
+        $$=-{1 \over 2}*{2 \over \sqrt(3)}sin(\omega_o T k)=-{1 \over 2}*{2 \over \sqrt(3)}sin({2\pi \over 3}k)$$
+        Example: Get F(z) for \(f(t)=tsin(t)\)<br/>
+        $$sin(t)--Z-->{zsin(\omega_o T) \over {z^2-2cos(\omega_oT)z+1}}$$
+        $$-TZ {d \over dz}{[{zsin(\omega_o T) \over {z^2-2cos(\omega_oT)z+1}}]}$$
+        Example: Get Pulse Transfer Function = \(C(z) \over U(z)\) (assumption: Zero Initial Condition):
+        $$c(k+2)+2c(k+1)+3c(k)=u(k+1)-u(k)$$
+        $$z^{-2}c(z)+z^{-1}c(z)+3c(z)=z^{-1}u(z)-u(z)$$
+        $$[z^{-2}+z^{-1}+3]c(z)=[z^{-1}-1]u(z)$$
+        $$[1+z+3z^{2}]c(z)=[z-z^{2}]u(z)$$
+        $$[3z^{2}+z+1]c(z)=z[1-z]u(z)$$
+        $${c(z) \over u(z)}={{z[1-z]} \over {3z^{2}+z+1}}$$
+        when we remove the assumption then: \(c(k+2)-->[z^2C(z)-z^2c(0)-zc(1)]\) from Shifting Property<br/> as c(0)!=0, c(1)!=0
+        $$c(z)=T.f.(z)*U(z)--->output in z-domain$$
+        $$c(k)=z^{-1}{[c(z)]}-->output \space in \space time$$
+    </p>
+    
     </section>
 <footer>
     <p><small>Hosted on <a href="https://www.github.com/hishamelreedy/">GitHub Pages</a> by HishamElreedy</small></p>

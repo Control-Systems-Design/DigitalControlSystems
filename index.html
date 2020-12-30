@@ -26,7 +26,19 @@
         li{
             font-size: large;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+        }
+        #link{
+            font-size: small;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-decoration: underline;
+        }
+        #titleheader{
+            font-size: x-large;
+        }
+        #quoteheader{
+            font-size: small;
+            padding-left: 0;
         }
     </style>
 </head>
@@ -34,16 +46,15 @@
     <div class="wrapper">
         <div id="toc"></div>    
     <header id="headtoc">
-        <h1 class="header">DigitalControlSystems</h1>
+        <h1 class="header" id="titleheader">Digital Control Systems</h1>
         <p class="header">Experimenting and Learning Digital Control Systems</p>
         <ul>
-            <li class="download"><a class="buttons" href="#">SimulationFiles</a></li>
-            <li><a class="buttons github" href="#">View On GitHub</a></li>
+            <li id="link" class="download"><a class="buttons" href="#">SimulationFiles</a></li>
+            <li id="link"><a class="buttons github" href="#">View On GitHub</a></li>
         </ul>
             <p class="header">Feel free to contact me if you don't understand anything</p>
           <p class="header">This project is maintained by <a class="header name" href="https://github.com/hishamelreedy/">HishamElreedy</a></p>
-          <p class="header"><blockquote>اللهم لا علم لنا الأ ما علمتنا به انك انت علام الغيوب</blockquote></p>
-
+          <p class="header"><blockquote id="quoteheader">اللهم لا علم لنا الأ ما علمتنا به انك انت علام الغيوب</blockquote></p>
         </header>
     <section>
         <h1>Introduction</h1>
@@ -232,11 +243,15 @@
     <h1>Pulse Transfer Function</h1>
     <figure>
         <img src="images/pulse_transfer_function.png"/>
-        <figcaption>Long Division</figcaption>
     </figure>
     <p>
-        
+        when solving pulse transfer function you have to follow certain steps in order not to get stuck while solving as follow:
+        $$subst. \space eqn \space (3) \space in \space 2 : E^*=U^*-D^* \overline{HG}^* E^*$$
+        $$==>E^* = {U^* \over {1+\overline{GH}^* D^*}}$$
     </p>
+    <ol>
+        <li></li>
+    </ol>
     </section>
 <footer>
     <p><small>Hosted on <a href="https://www.github.com/hishamelreedy/">GitHub Pages</a> by HishamElreedy</small></p>
